@@ -1,10 +1,7 @@
 use std::fs;
 
 fn get_theme_dir() -> std::path::PathBuf {
-  let theme_dir = dirs::home_dir()
-    .unwrap()
-    .join("dorion")
-    .join("themes");
+  let theme_dir = dirs::home_dir().unwrap().join("dorion").join("themes");
 
   if fs::metadata(&theme_dir).is_err() {
     match fs::create_dir_all(&theme_dir) {

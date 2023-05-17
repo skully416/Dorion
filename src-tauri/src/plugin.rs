@@ -11,10 +11,7 @@ pub struct Plugin {
 }
 
 fn get_plugin_dir() -> std::path::PathBuf {
-  let plugin_dir = dirs::home_dir()
-    .unwrap()
-    .join("dorion")
-    .join("plugins");
+  let plugin_dir = dirs::home_dir().unwrap().join("dorion").join("plugins");
 
   if fs::metadata(&plugin_dir).is_err() {
     match fs::create_dir_all(&plugin_dir) {

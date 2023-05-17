@@ -248,7 +248,6 @@ fn modify_window(window: &Window) {
       //     .SetZoomFactor(config::get_zoom())
       //     .unwrap_or(());
       // }
-
       #[cfg(target_os = "linux")]
       {
         use webkit2gtk::WebViewExt;
