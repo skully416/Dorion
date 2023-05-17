@@ -13,7 +13,7 @@ pub struct Config {
 }
 
 pub fn init() {
-  let appdata = tauri::api::path::data_dir().unwrap();
+  let appdata = dirs::data_dir().unwrap();
   let config_file = appdata.join("dorion").join("config.json");
 
   if fs::metadata(appdata.join("dorion")).is_err() {
@@ -34,7 +34,7 @@ pub fn init() {
 pub fn read_config_file() -> String {
   init();
 
-  let appdata = tauri::api::path::data_dir().unwrap();
+  let appdata = dirs::data_dir().unwrap();
   let config_file = appdata.join("dorion").join("config.json");
 
   fs::read_to_string(config_file).expect("Config does not exist!")
@@ -44,7 +44,7 @@ pub fn read_config_file() -> String {
 pub fn write_config_file(contents: String) {
   init();
 
-  let appdata = tauri::api::path::data_dir().unwrap();
+  let appdata = dirs::data_dir().unwrap();
   let config_file = appdata.join("dorion").join("config.json");
 
   fs::write(config_file, contents).expect("Error writing config!")

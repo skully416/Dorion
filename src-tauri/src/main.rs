@@ -113,7 +113,7 @@ fn main() {
 
   #[allow(clippy::single_match)]
   tauri::Builder::default()
-    .plugin(tauri_plugin_window_state::Builder::default().build())
+    // .plugin(tauri_plugin_window_state::Builder::default().build())
     .system_tray(create_systray())
     .invoke_handler(tauri::generate_handler![
       minimize,
@@ -226,28 +226,28 @@ fn modify_window(window: &Window) {
   window
     .with_webview(move |webview| {
       #[cfg(windows)]
-      unsafe {
-        use webview2_com::Microsoft::Web::WebView2::Win32::ICoreWebView2Settings2;
-        use windows::core::Interface;
+      // unsafe {
+      //   use webview2_com::Microsoft::Web::WebView2::Win32::ICoreWebView2Settings2;
+      //   use windows::core::Interface;
 
-        let settings: ICoreWebView2Settings2 = webview
-          .controller()
-          .CoreWebView2()
-          .unwrap()
-          .Settings()
-          .unwrap()
-          .cast()
-          .unwrap();
+      //   let settings: ICoreWebView2Settings2 = webview
+      //     .controller()
+      //     .CoreWebView2()
+      //     .unwrap()
+      //     .Settings()
+      //     .unwrap()
+      //     .cast()
+      //     .unwrap();
 
-        // settings.SetUserAgent(user_agent).unwrap();
-        settings.SetIsZoomControlEnabled(true).unwrap();
+      //   // settings.SetUserAgent(user_agent).unwrap();
+      //   settings.SetIsZoomControlEnabled(true).unwrap();
 
-        // Grab and set this config option, it's fine if it silently fails
-        webview
-          .controller()
-          .SetZoomFactor(config::get_zoom())
-          .unwrap_or(());
-      }
+      //   // Grab and set this config option, it's fine if it silently fails
+      //   webview
+      //     .controller()
+      //     .SetZoomFactor(config::get_zoom())
+      //     .unwrap_or(());
+      // }
 
       #[cfg(target_os = "linux")]
       {

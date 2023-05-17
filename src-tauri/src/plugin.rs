@@ -11,7 +11,7 @@ pub struct Plugin {
 }
 
 fn get_plugin_dir() -> std::path::PathBuf {
-  let plugin_dir = tauri::api::path::home_dir()
+  let plugin_dir = dirs::home_dir()
     .unwrap()
     .join("dorion")
     .join("plugins");

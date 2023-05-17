@@ -1,7 +1,7 @@
 use std::fs;
 
 fn get_theme_dir() -> std::path::PathBuf {
-  let theme_dir = tauri::api::path::home_dir()
+  let theme_dir = dirs::home_dir()
     .unwrap()
     .join("dorion")
     .join("themes");

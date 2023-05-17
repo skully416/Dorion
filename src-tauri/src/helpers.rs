@@ -1,10 +1,10 @@
 use std::path::*;
 use std::process::Command;
+use dirs::{data_dir};
 
 #[tauri::command]
 pub fn open_plugins() {
-  let plugin_folder = tauri::api::path::home_dir()
-    .unwrap()
+  let plugin_folder = data_dir().unwrap()
     .join("dorion")
     .join("plugins");
 
@@ -13,8 +13,7 @@ pub fn open_plugins() {
 
 #[tauri::command]
 pub fn open_themes() {
-  let theme_folder = tauri::api::path::home_dir()
-    .unwrap()
+  let theme_folder = data_dir().unwrap()
     .join("dorion")
     .join("themes");
 
